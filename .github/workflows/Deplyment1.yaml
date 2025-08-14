@@ -1,16 +1,42 @@
 name: Deployment Exercise 1
 on: push
 jobs:
+    test:
+      runs-on: 	ubuntu-latest
+      steps:
+            - name: Get Code
+              uses: actions/checkout@v5
+            - name: Install NodeJS
+              uses: actions/setup-node@v4
+              with: 
+                node-version: 18
+            - name: Install Dependncies
+              run: npm install
+            - name: Run Test
+              run: npm test
+    build:
+      runs-on: 	ubuntu-latest
+      steps:
+            - name: Get Code
+              uses: actions/checkout@v5
+            - name: Install NodeJS
+              uses: actions/setup-node@v4
+              with: 
+                node-version: 18
+            - name: Install Dependncies
+              run: npm install
+            - name: Build code
+              run: npm run build
     deploy:
         runs-on: 	ubuntu-latest
         steps:
             - name: Get Code
               uses: actions/checkout@v5
+            - name: Install NodeJS
+              uses: actions/setup-node@v4
+              with: 
+                node-version: 18
             - name: Install Dependncies
               run: npm install
-            - name: Run Test
-              run: npm test
-            - name: Build code
-              run: npm run build
             - name: Deploy code
               run: echo "Deloyed!"
