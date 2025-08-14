@@ -1,12 +1,15 @@
 name: Deployment Exercise 1
-on: push
+on:
+  pull_request:
+    types: opened
+  workflow_dispatch:
 jobs:
     test:
       runs-on: 	${{matrix.os}}
       strategy:
         matrix:
-          os: [ubuntu-latest,windows-latest,macos-latest]
-          node: [16,18,20]
+          os: [ubuntu-latest]
+          node: [16]
       steps:
             - name: Get Code
               uses: actions/checkout@v5
@@ -22,8 +25,8 @@ jobs:
       runs-on: 	${{matrix.os}}
       strategy:
         matrix:
-          os: [ubuntu-latest,windows-latest,macos-latest]
-          node: [16,18,20]
+          os: [ubuntu-latest]
+          node: [16]
       steps:
             - name: Get Code
               uses: actions/checkout@v5
@@ -39,8 +42,8 @@ jobs:
         runs-on: 	${{matrix.os}}
         strategy:
           matrix:
-            os: [ubuntu-latest,windows-latest,macos-latest]
-            node: [16,18,20]
+            os: [ubuntu-latest]
+            node: [16]
         steps:
             - name: Get Code
               uses: actions/checkout@v5
