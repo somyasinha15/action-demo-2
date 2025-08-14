@@ -3,6 +3,7 @@ on:
   pull_request:
     types: opened
   workflow_dispatch:
+  push:
 jobs:
     test:
       runs-on: 	${{matrix.os}}
@@ -17,6 +18,11 @@ jobs:
               uses: actions/setup-node@v4
               with: 
                 node-version: ${{matrix.node}}
+            - name: Cache Dependency
+              uses: actions/cache@v4
+              with:
+                path: ~/.npm
+                key: npm-${{ hashFiles('**/package-lock.json') }}
             - name: Install Dependncies
               run: npm install
             - name: Run Test
@@ -34,6 +40,11 @@ jobs:
               uses: actions/setup-node@v4
               with: 
                 node-version: ${{matrix.node}}
+            - name: Cache Dependency
+              uses: actions/cache@v4
+              with:
+                path: ~/.npm
+                key: npm-${{ hashFiles('**/package-lock.json') }}
             - name: Install Dependncies
               run: npm install
             - name: Build code
@@ -51,6 +62,11 @@ jobs:
               uses: actions/setup-node@v4
               with: 
                 node-version: ${{matrix.node}}
+            - name: Cache Dependency
+              uses: actions/cache@v4
+              with:
+                path: ~/.npm
+                key: npm-${{ hashFiles('**/package-lock.json') }}
             - name: Install Dependncies
               run: npm install
             - name: Deploy code
