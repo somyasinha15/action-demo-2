@@ -10,7 +10,7 @@ jobs:
       strategy:
         matrix:
           os: [ubuntu-latest]
-          node: [16]
+          node: [16,18]
       steps:
             - name: Get Code
               uses: actions/checkout@v5
@@ -32,7 +32,7 @@ jobs:
       strategy:
         matrix:
           os: [ubuntu-latest]
-          node: [16]
+          node: [16,18]
       steps:
             - name: Get Code
               uses: actions/checkout@v5
@@ -54,7 +54,7 @@ jobs:
         strategy:
           matrix:
             os: [ubuntu-latest]
-            node: [16]
+            node: [16,18]
         steps:
             - name: Get Code
               uses: actions/checkout@v5
